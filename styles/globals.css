@@ -1,0 +1,64 @@
+@font-face {
+  font-family: horyzen;
+  src: url(../fonts/horyzen.ttf);
+}
+
+:root {
+  --backgroundColor: #060508;
+  --borderColor: #49418263;
+  --foregroundColor: #181425;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+  margin: 0;
+  height: 2000px;
+  padding: 0;
+  background: var(--backgroundColor);
+  overflow: visible;
+  position: relative;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  padding:10px;
+  font-size: 24px;
+  font-family: horyzen;
+  color:#ffffffd7;
+  background: var(--foregroundColor);
+  border-bottom: 1px solid var(--borderColor);
+}
+
+.body-glow {
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: calc(100vh + 50vh);
+  background: radial-gradient(circle, #181425ce 20vh, #0a080f86 80vh, #060508 100vh);
+  z-index: -2;
+}
+
+.backdrop-filter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(100vw);
+  z-index: -1;
+}
