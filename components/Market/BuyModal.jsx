@@ -38,7 +38,7 @@ const BuyModal = ({spotlight,buyModal,toggleBuyModal,web3Shit,marketInfo,prices,
               setIsLoading(true)
               const confirmation = await publicClient.waitForTransactionReceipt({ hash: data.hash,confirmations: 1})
               if (confirmation.status === "success") {
-
+                alert("success","Transaction Confirmed",data.hash)
                 setIsLoading(false);
                 await delay(420)
                 toggleBuyModal(false)
@@ -46,10 +46,12 @@ const BuyModal = ({spotlight,buyModal,toggleBuyModal,web3Shit,marketInfo,prices,
                 getListed()
               } else {
                   console.log("Transaction was not successful");
+                  alert("error","error")
               }
         } catch (error) {
             setIsLoading(false)
             error.toString() === "ConnectorNotFoundError: Connector not found" && w3m({view:'Connect'})
+            alert("error","error")
         }
     }
 
@@ -65,15 +67,18 @@ const BuyModal = ({spotlight,buyModal,toggleBuyModal,web3Shit,marketInfo,prices,
               const confirmation = await publicClient.waitForTransactionReceipt({ hash: data.hash,confirmations: 1})
               if (confirmation.status === "success") {
                   setIsLoading(false);
+                  alert("success","Transaction Confirmed",data.hash)
                   await delay(1000)
                   getListed()
                   toggleBuyModal(false)
               } else {
                   console.log("Transaction was not successful");
+                  alert("error","error")
               }
         } catch (error) {
             setIsLoading(false)
             console.log(error)
+            alert("error","error")
         }
     }
 
