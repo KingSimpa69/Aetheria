@@ -3,10 +3,24 @@
   src: url(../fonts/horyzen.ttf);
 }
 
+@font-face {
+  font-family: inter;
+  src: url(../fonts/inter.ttf);
+}
+
+@keyframes glassSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 :root {
+  --transparentBackgroundColor: #06050881;
   --backgroundColor: #060508;
   --borderColor: #49418263;
+  --borderHoverColor: #686581ca;
   --foregroundColor: #181425;
+  --buttonColor: #588dbe;
+  --theEther: #93f1bd;
 }
 
 * {
@@ -18,15 +32,20 @@
 html,
 body {
   max-width: 100vw;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
 }
 
 body {
   margin: 0;
-  height: 2000px;
   padding: 0;
   background: var(--backgroundColor);
   overflow: visible;
   position: relative;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -34,13 +53,11 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  padding:10px;
-  font-size: 24px;
-  font-family: horyzen;
-  color:#ffffffd7;
-  background: var(--foregroundColor);
-  border-bottom: 1px solid var(--borderColor);
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 .body-glow {
@@ -48,7 +65,7 @@ h1 {
   position: absolute;
   top: 0;
   width: 100vw;
-  height: calc(100vh + 50vh);
+  height: calc(100vh);
   background: radial-gradient(circle, #181425ce 20vh, #0a080f86 80vh, #060508 100vh);
   z-index: -2;
 }
@@ -60,5 +77,71 @@ h1 {
   width: 100%;
   height: 100%;
   backdrop-filter: blur(100vw);
-  z-index: -1;
+  z-index: 0;
+}
+
+.wrapper {
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  padding-top:50px;
+  position: relative;
+  z-index: 0;
+  color:#ffffff;
+}
+
+.flexRow {
+  display:flex;
+  width:100%;
+  flex-direction: row;
+}
+
+.flexCol {
+  display:flex;
+  height:100%;
+  flex-direction: column;
+}
+
+.matrixCanvas{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#060508;
+  z-index: 10000;
+}
+
+.hidden {
+  display:none;
+}
+
+.glass {
+  height: 150%;
+  width: 150%;
+  z-index: 0;
+  position: absolute;
+  right: 0;
+  transform: rotate(135deg);
+}
+
+.glass:after {
+  content: '';
+  top: 0;
+  transform: translateX(100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  animation: glassSlide 1s infinite;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(128,186,232,0) 99%, rgba(125,185,232,0) 100%);
+}
+
+.glassContainer {
+  position: relative;
+  height:100%;
+  width:100%;
+  z-index: 1;
+  overflow: hidden;
+  margin-bottom: 0;
 }

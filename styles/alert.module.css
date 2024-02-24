@@ -1,0 +1,87 @@
+.wrapper {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width:1px;
+    z-index: 42069;
+    margin: 0 auto;
+    bottom:10px;
+    left:219px;
+    overflow: visible;
+}
+
+.container {
+    font-size: 10px;
+    font-family: kanit;
+    color:#c1c1c1;
+    margin-top:10px;
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    border: 0px solid #ffffff;
+    border-radius: 10px;
+    width: 420px;
+    height:75px;
+    max-width: 98vw;
+    text-align: center;
+    background-color:#242836;
+    text-overflow: ellipsis;
+}
+
+.error {
+    border-left:5px solid #eb8177;
+}
+
+.info {
+    border-left:5px solid #ecca6b;
+}
+
+.success {
+    border-left:5px solid #6be8c2;
+}
+
+.baseLogo {
+    width:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.baseLogo svg {
+    width:20px;
+    height:20px;
+}
+
+.alertInfo {
+    width:70%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.alertInfo h1{
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-family: inter;
+}
+
+.alertInfo p{
+    margin-top: 5px;
+    color:#6be8c2;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-family: inter;
+}
+
+.alertInfo p:nth-child(3){
+    margin-top: 5px;
+    color:var(--theEther);
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-family: inter;
+}

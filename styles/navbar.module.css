@@ -1,0 +1,98 @@
+.navbar {
+    width:100vw;
+    height: 50px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+    padding:10px;
+    background: var(--foregroundColor);
+    border-bottom: 1px solid var(--borderColor);
+    z-index: 2;
+}
+
+.navbar h1 {
+    text-shadow: #4572e380 1px 0 15px;
+    font-size: 20px;
+    font-family: horyzen;
+    color:#ffffffd3;
+}
+
+.connectBtn {
+    transition: opacity 0.3s;  
+    opacity: .85;
+    font-weight: 400;
+    font-size: 14px;
+    margin-right:5px;
+    color:#ffffff;
+    font-family: inter;
+    padding:8px 10px;
+    border-radius: 3px;
+    background:var(--buttonColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.connectBtn:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.connectedAvatar {
+    opacity: .85;
+    margin-right:5px;
+    border-radius: 100%;
+    box-shadow: #4572e380 1px 0 15px;
+}
+
+.connectedAvatar:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.searchBar {
+    border: 1px solid var(--borderColor);
+    border-radius: 5px;
+    padding:10px;
+    color:#ffffff8d;
+    overflow: hidden;
+    background-color:#060508;
+    display:flex;
+    flex-direction: row;
+    width:45%;
+    height:40px;
+}
+
+.searchBar:hover {
+    border: 1px solid var(--borderHoverColor);
+}
+
+.searchBar input[type="text"]
+{
+    width:100%;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    font-family: inter;
+    color:#e6e6e6;
+    background: #060508;
+    border: none;
+}
+
+.searchBar input[type="text"]::placeholder
+{
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    font-family: inter;
+    color:#ffffff8d;
+}
+
+.navBarOuterEdges {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:130px;
+}

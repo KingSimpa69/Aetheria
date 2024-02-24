@@ -1,7 +1,12 @@
-export default function Home() {
-  return (
-    <>
-      <h1>Aetheria</h1>
-    </>
-  );
+
+
+const Index = () => {
+
+    return(
+        <div className={'wrapper'}>
+            Lol
+        </div>
+    )
 }
+
+export default Index
