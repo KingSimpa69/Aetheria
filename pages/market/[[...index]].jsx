@@ -92,16 +92,16 @@ const Market = ({web3Shit, router, alert}) => {
         validMarket && getInfo(router.query.index[0])
     },[validMarket,router.query.index])
 
-    useEffect(()=>{
-        Object.keys(prices).length !== 0 && console.log(prices)
-    },[prices])
+    //useEffect(()=>{
+    //    Object.keys(prices).length !== 0 && console.log(prices)
+    //},[prices])
 
     return(
         <div className={'wrapper'}>
             <MatrixLoadingScreen isLoading={isLoading}/>
             <BuyModal alert={alert} setListed={setListed} w3m={w3m} setIsLoading={setIsLoading} prices={prices} web3Shit={web3Shit} marketInfo={marketInfo} toggleBuyModal={toggleBuyModal} buyModal={buyModal} spotlight={spotlight} />
             <ManageModal alert={alert} owned={owned} setOwned={setOwned} listed={listed} setListed={setListed} setIsLoading={setIsLoading} web3Shit={web3Shit} marketInfo={marketInfo} spotlight={spotlight} setSpotlight={setSpotlight} manageModal={manageModal} toggleManageModal={toggleManageModal} />
-            <MarketInfo view={view} setView={setView} marketInfo={marketInfo} />
+            <MarketInfo web3Shit={web3Shit} view={view} setView={setView} marketInfo={marketInfo} />
             
             {view === "wallet" && <Wallet owned={owned} setOwned={setOwned} setSpotlight={setSpotlight} toggleManageModal={toggleManageModal} setIsLoading={setIsLoading} marketInfo={marketInfo} web3Shit={web3Shit} />}
             {view === "market" && <Listed setPrices={setPrices} listed={listed} setListed={setListed} toggleBuyModal={toggleBuyModal} setSpotlight={setSpotlight} web3Shit={web3Shit} setIsLoading={setIsLoading} isValid={validMarket} marketInfo={marketInfo}/> }    

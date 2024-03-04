@@ -14,8 +14,190 @@
 }
 
 .marketInfo {
-    background-color: var(--transparentBackgroundColor);
-    border-bottom: 1px solid #ffffff20;
+    position: relative;
+    background: url("https://i.seadn.io/gcs/files/d1e3528fa4ab3381609a18f482825b3a.gif");;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #2a254d;
+}
+
+.marketInfo::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, .25));
+}
+
+.marketInfoItem:not(:nth-child(2)) {
+    border-left: 1px solid var(--borderColor);
+}
+
+.marketInfoItem {
+    margin-top:15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    z-index: +1;
+}
+
+.marketMeta {
+    min-height:100px;
+    width:100%;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.marketMeta > :nth-child(2n) {
+    position: relative;
+    z-index: +1;
+    width:calc(80% - 10%);
+    border:1px solid #ffffff00;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left:3%;
+    margin-right:3%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: inter;
+    color:#ffffffd9;
+    padding:5px;
+}
+
+.marketPfp {
+    position: relative;
+    z-index: +1;
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--borderColor);
+    padding-left:15px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.marketTitle {
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.marketTitle:hover {
+    overflow: visible;
+}
+
+.imgAndLinks {
+    position: relative;
+    z-index: +1;
+    border: 1px solid #ffffff05;
+    width:24%;
+    padding-left:10px;
+    display:flex;
+    font-family: inter;
+}
+
+.imgAndLinks :first-child {
+    font-size: 20px;
+}
+
+.imgAndLinks > :nth-child(2n) {
+    font-size: 12px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:calc(100% - 85px);
+}
+
+@media only screen and (max-width: 1500px) {
+    .marketTitle {
+        margin: 10px;
+    }
+    .marketPfp {
+        width: 100px;
+        height: 100px;
+        margin: 15px;
+    }
+    .imgAndLinks {
+        width:100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+    }
+    .marketMeta > :nth-child(2n) {
+        margin-bottom:15px;
+        width:100%;
+        font-size: 16px;
+        text-align: center;
+    }
+    .marketInfoItem:nth-child(6) {
+        border-left: none;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .marketMeta > :nth-child(2n) {
+        font-size: 15px;
+    }
+    .marketInfoItem:nth-child(5) {
+        border-left: none;
+        border-right:1px solid var(--borderColor);
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .marketMeta > :nth-child(2n) {
+        font-size: 14px;
+    }
+    .marketInfoItem:nth-child(4) {
+        border-right: none;
+        border-left: none;
+    }
+
+    .marketInfoItem:nth-child(5) {
+        border-right: none;
+        border-left:1px solid var(--borderColor);
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .marketMeta > :nth-child(2n) {
+        font-size: 13px;
+    }
+    .marketInfoItem:nth-child(3) {
+        border-left: none;
+    }
+
+    .marketInfoItem:nth-child(4) {
+        border-right: none;
+    }
+
+    .marketInfoItem:nth-child(5) {
+        border-left: none;
+    }
+  }
+
+.marketInfoItem p {
+    font-family: inter;
+    color: #ffffff58;
+    font-size: 12px;
+}
+
+.marketInfoItem h1 {
+    color:#ffffffca;
+    font-size: 16px;
+    font-family: inter;
 }
 
 .viewSwitcher {
@@ -23,7 +205,7 @@
     text-transform: uppercase;
     height:42.0px;
     background-color: var(--transparentBackgroundColor);
-    border-bottom: 1px solid #ffffff20;
+    border-bottom: 1px solid var(--borderColor);
     width:100%;
 }
 
@@ -328,3 +510,7 @@
         width:280px;
     }
   }
+
+
+
+
