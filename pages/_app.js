@@ -29,12 +29,7 @@ export default function App({ Component, pageProps }) {
       tx:tx
     }])
   }
-
-  useEffect(() => {
-    setIsLoading(true)
-  }, [router.query])
   
-
   useEffect(() => {
     web3Shit.chain !== 0 ? console.log(web3Shit) : null
   }, [web3Shit])  

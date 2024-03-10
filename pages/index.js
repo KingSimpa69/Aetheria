@@ -4,7 +4,7 @@ const Index = ({router,setIsLoading,isLoading}) => {
 
     useEffect(() => {
         isLoading && setIsLoading(false)
-    }, [isLoading])
+    }, [router,isLoading])
     
 
     return(
