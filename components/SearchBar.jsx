@@ -192,10 +192,10 @@ const SearchBar = ({web3Shit,setIsLoading}) => {
             <input value={search} onChange={(e)=>handleInput(e.target.value)} placeholder={'Search for NFT smart contract'} type={'text'} />
         </div>
         <div className={styles.searchResults}>
-            {result.length > 0 && result.map((e)=>{
+            {result.length > 0 && result.map((e,index)=>{
                 if (e.market === true) { 
                 return(
-                <Link href={`/market/${e.contract}`}>
+                <Link key={index} href={`/market/${e.contract}`}>
                     <div onClick={()=>{setSearch(""),setIsLoading(true)}} className={styles.searchResult}>
                         <img src={e.image}/>
                         <h1>{e.marketName}</h1>
@@ -219,7 +219,7 @@ const SearchBar = ({web3Shit,setIsLoading}) => {
                 </Link>
                 )} else {
                     return(
-                    <Link href={`/create/${search}`}>
+                    <Link key={index} href={`/create/${search}`}>
                     <div onClick={()=>{setSearch(""),setIsLoading(true)}} className={styles.searchResult}>
                         <img src={e.image}/>
                         <h1>{e.name}</h1>

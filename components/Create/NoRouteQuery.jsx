@@ -5,7 +5,7 @@ const NoRouteQuery = () => {
 
     return(
         <div className={styles.container}>
-            <div className={styles.header}>Something's not right</div>
+            <div className={styles.header}>Something&apos;s not right</div>
             <HorizontalRule />
             <div className={styles.checkParams}>Please ensure that you have entered a VALID NFT CONTRACT in the URL.</div>
             <div className={styles.checkParams}>for example:</div>
