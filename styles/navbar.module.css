@@ -61,8 +61,8 @@
     background-color:#060508;
     display:flex;
     flex-direction: row;
-    width:45%;
-    height:40px;
+    height:40px !important;
+    z-index: +1;
 }
 
 .searchBar:hover {
@@ -95,4 +95,102 @@
     justify-content: center;
     align-items: center;
     width:130px;
+}
+
+.searchContainer{
+    position: relative;
+    margin-top: -5px;
+    display:flex;
+    align-self: flex-start;
+    width:45%;
+    flex-direction: column;
+}
+
+.searchResults {
+    position: relative;
+    margin-top: -5px;
+    background-color: #060508;
+    border: 1px solid var(--borderColor);
+    border-top: none;
+    border-radius: 5px;
+    box-shadow: 10px 10px 50px var(--foregroundColor);
+}
+
+.searchResult {
+    display:flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height:80px;
+    position: relative;
+    border-bottom: #2a254d6c 1px solid;
+}
+
+.searchResult:hover {
+    cursor: pointer;
+    background-color: #ffffff09;
+}
+
+.searchResults:first-child {
+    margin-top: 5px;
+}
+
+.searchResult > img {
+    margin-left:10px;
+    width:50px;
+    height:50px;
+    border: 0px solid #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.searchResult h1 {
+    color:#ffffffe7;
+    width:250px;
+    font-size: 16px;
+    margin-left: 5px;
+    font-family: inter;
+}
+
+.searchResult > div {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    height:100%;
+    width:75%;
+    width:calc(100% - 290px);
+}
+
+.searchResult > div > div {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    height:100%;
+    width:50%;
+    font-family: inter;
+    font-size: 10px;
+    color: rgb(161 151 170);
+    padding-right: 5px;
+}
+
+
+.searchResult > div > div > div {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.searchResult > div > div p {
+    opacity: .55;
+    text-transform: uppercase;
+    margin-right: 15px;
+    margin-top:2px;
+}
+
+.noMarket {
+    color: rgb(161 151 170);
+    padding-right: 10px;
+    font-family: inter;
 }

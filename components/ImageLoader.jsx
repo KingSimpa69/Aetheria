@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const ImageLoader = ({ src, alt, width, height, fill }) => {
+const ImageLoader = ({ customClass, src, alt, width, height, fill }) => {
   const [loading, setLoading] = useState(true);
 
   const handleLoad = () => {
@@ -9,7 +9,7 @@ const ImageLoader = ({ src, alt, width, height, fill }) => {
   };
 
   return (
-    <div className={`glassContainer ${!loading && 'hidden'}`} style={{ position: 'relative', display: 'inline-block' }}>
+    <div className={`${customClass} glassContainer ${!loading && 'hidden'}`} style={{ position: 'relative', display: 'inline-block' }}>
       {loading && (
         <div className="glass"/>
       )}

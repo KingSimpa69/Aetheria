@@ -15,7 +15,6 @@ const Listed = ({marketInfo,isValid,setIsLoading,web3Shit,setSpotlight,toggleBuy
               })
               //console.log(data)
               setListed(data)
-              setIsLoading(false)
         }
         isValid && marketInfo.length > 2 && getListed()
     }, [marketInfo,isValid,setIsLoading])

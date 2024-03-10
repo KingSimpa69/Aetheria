@@ -1,10 +1,15 @@
+import { useEffect } from "react"
 
+const Index = ({router,setIsLoading,isLoading}) => {
 
-const Index = () => {
+    useEffect(() => {
+        isLoading && setIsLoading(false)
+    }, [isLoading])
+    
 
     return(
         <div className={'wrapper'}>
-            Lol
+            <div className={'welcome'}>Type an NFT smart contract into the search bar to begin</div>
         </div>
     )
 }

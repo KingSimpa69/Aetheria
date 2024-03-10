@@ -1,23 +1,12 @@
 import ABI from './ABI.json'
 
-export const REGISTRY_CONTRACT = {
+export const FACTORY_CONTRACT = {
     8453 : {
         address: "",
-        abi: ABI.registry 
+        abi: ABI.factory 
     },
     84532 : {
-        address: "0x0Caf2E4B166BF7a6B7324E7e391dd85705857BCE",
-        abi: ABI.registry 
-    }
-}
-
-export const MARKET_CONTRACT = {
-    8453 : {
-        address: "",
-        abi: ABI.market 
-    },
-    84532 : {
-        address: "0xd8E3931c803aB5C8383FF2712AA5A627586fED3D",
-        abi: ABI.market 
+        address: "0x1C04D4bb19FBB99c7CD3c9Df780642a2F914c028",
+        abi: ABI.factory 
     }
 }

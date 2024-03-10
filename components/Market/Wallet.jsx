@@ -21,13 +21,11 @@ const Wallet = ({marketInfo,web3Shit,setIsLoading,toggleManageModal,setSpotlight
                 } while (uniqueToken !== undefined);
                 //console.log(owned)
                 setOwned(owned);
-                setIsLoading(false)
             } catch (error) {
                 console.log(error);
             }
         };
         marketInfo[1] && isAddress(web3Shit.address) && pullOwned();
-        marketInfo[1] && !isAddress(web3Shit.address) && setIsLoading(false);
     }, [marketInfo,web3Shit,setIsLoading]);
 
 

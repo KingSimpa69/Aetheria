@@ -3,22 +3,21 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { shortenEthAddy } from "@/functions/shortenEthAddy";
+import BLOCKSCOUT from "@/blockscout.json"
 
-const Alert = ({ alerts, setAlerts }) => {
+const Alert = ({ alerts, setAlerts, web3Shit }) => {
   const [exitAnimationIndexes, setExitAnimationIndexes] = useState([]);
 
   useEffect(() => {
     const animationTimeouts = [];
 
-    // Apply animation to each alert
     alerts.forEach((alert, index) => {
       const timeoutId = setTimeout(() => {
         setExitAnimationIndexes(prevIndexes => [...prevIndexes, index]);
-      }, 3500 * (index + 1)); // Delay each animation
+      }, 3500 * (index + 1));
       animationTimeouts.push(timeoutId);
     });
 
-    // Clean up timeouts
     return () => {
       animationTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
     };
@@ -34,8 +33,8 @@ const Alert = ({ alerts, setAlerts }) => {
   return (
     <div className={style.wrapper}>
       {alerts.map((alert, index) => (
+        <a key={index} href={`${BLOCKSCOUT[web3Shit.chain]}tx/${encodeURI(alert.tx)}`} target="_blank">
         <div
-          key={index}
           className={`${style.container} ${style[alert.type]} ${
             exitAnimationIndexes.includes(index)
               ? "animate__animated animate__fadeOutLeft"
@@ -45,7 +44,7 @@ const Alert = ({ alerts, setAlerts }) => {
         >
           <div className={style.baseLogo}>
             {alert.type === "success" && alert.tx !== undefined && (
-              <Image src={"/images/base50.png"} width={50} height={50} />
+              <Image alt={'base-logo'} src={"/images/base50.png"} width={50} height={50} />
             )}
             {alert.type === "success" && alert.tx === undefined && (
               <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
@@ -67,6 +66,7 @@ const Alert = ({ alerts, setAlerts }) => {
             )}
           </div>
         </div>
+        </a>
       ))}
     </div>
   );
