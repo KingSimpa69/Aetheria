@@ -1,10 +1,15 @@
+import fetch from 'node-fetch';
+import { HttpsProxyAgent } from 'https-proxy-agent';
+
 const uploadimage = async (req, res) => {
+  const agent = new HttpsProxyAgent(process.env.PROXY);
     if (req.method === 'POST') {
       try {
         const { imageData } = req.body;
         const imgurClientId = process.env.IMGUR_CLIENT_ID;
         const clientIpAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
         const response = await fetch('https://api.imgur.com/3/image', {
+          agent:agent,
           method: 'POST',
           headers: {
             'Authorization': `Client-ID ${imgurClientId}`,
