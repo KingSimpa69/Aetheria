@@ -2,10 +2,9 @@ import styles from '@/styles/navbar.module.css'
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { useEffect } from 'react'
 import { useChainId, useAccount } from 'wagmi'
-import { generateAvatarURL } from '@cfx-kit/wallet-avatar';
-import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Web3Status = ({router,setWeb3Shit,web3Shit}) => {
+const Web3Status = ({router,setWeb3Shit,web3Shit,isFocused,width}) => {
 
     const chainId = useChainId()
     const {address, isConnected} = useAccount()
@@ -18,9 +17,9 @@ const Web3Status = ({router,setWeb3Shit,web3Shit}) => {
     }, [address, isConnected, chainId, setWeb3Shit, web3Shit])
 
     return(
-        <div className={styles.navBarOuterEdges}>
-            {!web3Shit.isConnected ? <div onClick={() => open({view:'Connect'})} className={styles.connectBtn}>Connect</div>:
-            <Image alt={"web3Avatar"} className={styles.connectedAvatar} height={35} width={35} src={generateAvatarURL(web3Shit.address === undefined ? "0x0000000000000000000000000000000000000000" : web3Shit.address)} onClick={() => open({ view: 'Account' })}/>}
+        <div className={width < 900 && isFocused ? `hidden` : styles.navBarOuterEdges}>
+            {!web3Shit.isConnected ? <FontAwesomeIcon icon="fa-solid fa-wallet" onClick={() => open({view:'Connect'})} />:
+            <FontAwesomeIcon icon="fa-solid fa-wallet" onClick={() => open({ view: 'Account' })} />}
         </div>
     )
 }

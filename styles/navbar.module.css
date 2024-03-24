@@ -65,12 +65,22 @@
     z-index: +1;
 }
 
+.searchBar svg{
+    height:40px;
+    width:50px;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding:10px;
+}
+
 .searchBar:hover {
     border: 1px solid var(--borderHoverColor);
 }
 
 .searchBar input[type="text"]
 {
+    height:40px;
     width:100%;
     font-size: 14px;
     font-weight: 600;
@@ -79,6 +89,7 @@
     color:#e6e6e6;
     background: #060508;
     border: none;
+    margin-top:-10px;
 }
 
 .searchBar input[type="text"]::placeholder
@@ -94,10 +105,21 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    width:130px;
+    width:130px !important;
 }
 
-.searchContainer{
+.navBarOuterEdges svg {
+    opacity:0.85;
+    width:25px;
+    color: var(--buttonColor)
+}
+
+.navBarOuterEdges svg:hover {
+    opacity:1;
+    cursor:pointer;
+}
+
+.searchContainer {
     position: relative;
     margin-top: -5px;
     display:flex;
@@ -106,11 +128,59 @@
     flex-direction: column;
 }
 
+
+.searchConatinerFocused {
+    position: relative;
+    margin-top: -5px;
+    display:flex;
+    align-self: flex-start;
+    width:45%;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 900px) {
+    .navBarOuterEdges {
+        width:1px !important;
+        margin-left: calc(130px/2);
+    }
+    .navBarOuterEdges svg {
+        margin-left: -130px;
+    }
+    .searchContainer {
+        position: relative;
+        margin-top: -15px;
+        display:flex;
+        width:50px;
+        height:50px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
+
+    .searchConatinerFocused {
+        width:100vw !important;
+    }
+
+    .searchContainer svg {
+        cursor: pointer;
+        padding:12px;
+        height:100%;
+        border: none;
+        opacity:0.85;
+        color: var(--buttonColor)
+    }
+
+    .searchContainer svg:hover {
+        opacity:1;
+    }
+}
+
 .searchResults {
     position: relative;
     margin-top: -5px;
     background-color: #060508;
-    border: 1px solid var(--borderColor);
+
     border-top: none;
     border-radius: 5px;
     box-shadow: 10px 10px 50px var(--foregroundColor);

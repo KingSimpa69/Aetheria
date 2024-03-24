@@ -124,6 +124,10 @@ button:focus {
   display:none;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .glass {
   height: 150%;
   width: 150%;

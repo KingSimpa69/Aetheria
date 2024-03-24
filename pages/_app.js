@@ -8,10 +8,11 @@ import { useRouter } from "next/router";
 const { library, config } = require('@fortawesome/fontawesome-svg-core');
 import { faGithub, faDiscord, faLinkedin, faXTwitter, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { faCopy} from '@fortawesome/free-regular-svg-icons';
-import { faMagnifyingGlass, faWallet, faStore, faTag, faXmark, faInfo, faThumbsUp, faGlobe, faSliders  } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faWallet, faStore, faTag, faXmark, faInfo, faThumbsUp, faGlobe, faSliders } from '@fortawesome/free-solid-svg-icons';
 import { Web3Modal } from "@/components/Web3/Web3Modal";
 import Alert from "@/components/Alert";
 import MatrixLoadingScreen from "@/components/LoadingScreen";
+import { useWindowSize } from "@/hooks/useWindowSize";
 library.add(faWallet,faStore,faMagnifyingGlass,faTag,faXmark,faInfo,faThumbsUp, faGlobe, faXTwitter, faGithub, faDiscord, faTelegram, faSliders)
 config.autoAddCss = false;
 
@@ -21,6 +22,8 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [alerts,setAlerts] = useState([])
   const [isLoading,setIsLoading] = useState(true)
+  const [isFocused,setIsFocused] = useState(false)
+  const {width} = useWindowSize();
 
   const alert = (type,message,tx) => {
     setAlerts(alerts=>[...alerts,{
@@ -40,7 +43,7 @@ export default function App({ Component, pageProps }) {
       <HeadMeta />
       <Alert web3Shit={web3Shit} alerts={alerts} setAlerts={setAlerts} />
       <AetheriaGlow />
-      <NavBar setIsLoading={setIsLoading} config={config} router={router} web3Shit={web3Shit} setWeb3Shit={setWeb3Shit}/>
+      <NavBar width={width} isFocused={isFocused} setIsFocused={setIsFocused} setIsLoading={setIsLoading} config={config} router={router} web3Shit={web3Shit} setWeb3Shit={setWeb3Shit}/>
       <Component isLoading={isLoading} setIsLoading={setIsLoading} router={router} web3Shit={web3Shit} {...pageProps} alert={alert} />
     </Web3Modal>
   )

@@ -3,19 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState,useEffect } from "react";
 import { isAddress } from "viem";
 import { readContract } from "@wagmi/core";
-import { publicClient } from "@/components/Web3/Web3Modal";
 import ABI from "@/functions/contracts/ABI.json"
 import {FACTORY_CONTRACT} from "@/functions/contracts"
 import { formatUnits } from "viem";
 import formatETH from "@/functions/formatETH";
 import Link from "next/link";
 import BLOCKSCOUT from "@/blockscout.json"
+import useDebounce from "@/hooks/useDebounce";
 
 
-const SearchBar = ({web3Shit,setIsLoading}) => {
+const SearchBar = ({web3Shit,setIsLoading,isFocused,setIsFocused,width}) => {
 
     const [search,setSearch] = useState("")
     const [result,setResults] = useState([])
+
+    const debouncedSearch = useDebounce(search, 750);
 
     const handleInput = (value) => {
         setSearch(value.toString());
@@ -170,6 +172,11 @@ const SearchBar = ({web3Shit,setIsLoading}) => {
             return handleSearchError();
         }
     };
+
+    const closeFocus = () => {
+        setSearch("")
+        setIsFocused(false)
+    }
     
     const handleSearchError = () => {
         return(
@@ -182,21 +189,24 @@ const SearchBar = ({web3Shit,setIsLoading}) => {
     };    
 
     useEffect(() => {
-        search !== "" ? masterSearch(search) : setResults([])
-    }, [search])
+        debouncedSearch !== "" ? masterSearch(debouncedSearch) : setResults([])
+    }, [debouncedSearch])
     
     return(
-        <div className={styles.searchContainer}>
-        <div className={styles.searchBar}>
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-            <input value={search} onChange={(e)=>handleInput(e.target.value)} placeholder={'Search for NFT smart contract'} type={'text'} />
-        </div>
+        <div className={!isFocused ? styles.searchContainer : styles.searchConatinerFocused}>
+        {isFocused || width > 900 ? <div className={styles.searchBar}>
+            <FontAwesomeIcon onClick={()=>{setIsFocused(true)}} icon="fa-solid fa-magnifying-glass" />
+            {isFocused || width > 900 ? <input onClick={()=>{setIsFocused(true)}} value={search} onChange={(e)=>handleInput(e.target.value)} placeholder={'Search for NFT smart contract'} type={'text'} /> : null}
+            {<div className={!isFocused?"invisible":null}><FontAwesomeIcon icon="fa-solid fa-xmark" onClick={(e)=>closeFocus()}/></div> }
+        </div> :
+        <FontAwesomeIcon onClick={()=>{setIsFocused(true)}} icon="fa-solid fa-magnifying-glass" />
+        }
         <div className={styles.searchResults}>
             {result.length > 0 && result.map((e,index)=>{
                 if (e.market === true) { 
                 return(
                 <Link key={index} href={`/market/${e.contract}`}>
-                    <div onClick={()=>{setSearch(""),setIsLoading(true)}} className={styles.searchResult}>
+                    <div onClick={()=>{closeFocus(),setIsLoading(true)}} className={styles.searchResult}>
                         <img src={e.image}/>
                         <h1>{e.marketName}</h1>
                         <div>
@@ -220,7 +230,7 @@ const SearchBar = ({web3Shit,setIsLoading}) => {
                 )} else {
                     return(
                     <Link key={index} href={`/create/${search}`}>
-                    <div onClick={()=>{setSearch(""),setIsLoading(true)}} className={styles.searchResult}>
+                    <div onClick={()=>{closeFocus(),setIsLoading(true)}} className={styles.searchResult}>
                         <img src={e.image}/>
                         <h1>{e.name}</h1>
                         <div className={styles.noMarket}>
